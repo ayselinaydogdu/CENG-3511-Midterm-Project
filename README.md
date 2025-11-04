@@ -45,7 +45,7 @@ To run this project on your local machine, follow these steps.
 3.  **Run the Game:**
     Execute the Python script from your terminal:
     ```bash
-    python connect_four_ai.py
+    python connectFour_game.py
     ```
     *(Note: Replace `connect_four_ai.py` with the actual name of your Python file.)*
 
@@ -57,7 +57,7 @@ To run this project on your local machine, follow these steps.
 4.  The board will update and display your move.
 5.  The AI will then calculate its best move and place its piece on the board. The console will announce the AI's chosen column.
 6.  The game continues until one player achieves four pieces in a row (horizontally, vertically, or diagonally) or the board is full (a draw).
-7.  A message will announce the winner (e.g., "🎉 Oyuncu kazandı!" or "🤖 AI kazandı!").
+7.  A message will announce the winner (e.g., "The player won" or "AI won").
 
 ## 6. AI Design and Logic
 
