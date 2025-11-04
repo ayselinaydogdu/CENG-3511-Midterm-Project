@@ -17,7 +17,7 @@ This project fulfills **Option 3: AI Opponent for a Turn-Based Game** from the p
 * **Two-Player Gameplay:** Allows a human player (Player 1) to compete against an AI (Player 2).
 * **Intelligent AI Opponent:** The AI uses the Minimax algorithm to find the best possible move.
 * **Optimized Performance:** **Alpha-Beta Pruning** is implemented to significantly reduce the search space, allowing the AI to look several moves ahead without significant computational delay.
-* **Strategic Heuristic Evaluation:** The AI uses a robust `score_position` function to evaluate non-terminal game states, prioritizing wins, blocks, and strategic board control.
+* **Strategic Heuristic Evaluation:** The AI uses a robust `score_board` function to evaluate non-terminal game states, prioritizing wins, blocks, and strategic board control.
 
 ## 3. Technologies Used
 
@@ -81,11 +81,11 @@ The recursion stops under two conditions:
 
 2.  **Depth Limit Reached:** The algorithm has searched `depth` moves into the future. At this point, it cannot determine a definite win/loss, so it must **evaluate the "goodness"** of the current board using a heuristic function.
 
-### 6.4. Heuristic Evaluation (`score_position`)
+### 6.4. Heuristic Evaluation (`score_board`)
 This function is the "brain" of the AI. It assigns a numerical score to any non-terminal board state. It does this by:
 
 1.  **Prioritizing the Center Column:** A piece in the center column (`column_count // 2`) has more potential winning lines. The AI gets a small bonus (`+3`) for each of its pieces in this column.
-2.  **Window-Based Scoring (`evaluate_window`):** The function scans the entire board (horizontally, vertically, and both diagonals) using a 4-piece "window." It scores each window:
+2.  **Window-Based Scoring (`score_window`):** The function scans the entire board (horizontally, vertically, and both diagonals) using a 4-piece "window." It scores each window:
     * **Offensive Scoring:**
         * `+100` for 4-in-a-row (A guaranteed win, this is the highest heuristic score).
         * `+5` for 3-in-a-row with an empty slot (A strong threat).
@@ -110,7 +110,7 @@ Since this is an algorithmic AI (not ML/RL), it does not require "training." Its
 
 ## 8. Project Challenges and Future Work
 
-* **Heuristic Tuning:** The most significant challenge was balancing the heuristic scores in the `evaluate_window` function. Determining the right values (e.g., `+5` for a 3-piece threat vs. `-4` for blocking an opponent's 3-piece threat) was a process of trial and error to make the AI play in a "smart" and balanced way.
+* **Heuristic Tuning:** The most significant challenge was balancing the heuristic scores in the `score_window` function. Determining the right values (e.g., `+5` for a 3-piece threat vs. `-4` for blocking an opponent's 3-piece threat) was a process of trial and error to make the AI play in a "smart" and balanced way.
 * **Performance vs. Depth:** Finding the right `depth` was a key trade-off between AI intelligence and game performance. `depth=4` was chosen for this project, but `depth=5` is also viable, albeit slightly slower.
 * **Debugging Recursion:** Debugging the Minimax algorithm was complex. It required careful state tracking and printing board states at different recursion levels to identify bugs in the logic.
 
